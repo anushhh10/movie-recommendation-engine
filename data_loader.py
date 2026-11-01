@@ -642,10 +642,10 @@ def get_sample_movies() -> List[MovieNode]:
         {
             "id": "m77",
             "title": "Fauzi",
-            "year": 2027,
+            "year": 2026,
             "director": "Hanu Raghavapudi",
-            "cast": ["Prabhas, Imanvi Esmail, Anupam Kher"],
-            "genres": ["period action, war drama, historical drama, spy fiction"]
+            "cast": ["Prabhas", "Imanvi Esmail", "Anupam Kher"],
+            "genres": ["Action", "Drama", "History"]
         },
         {
             "id": "m78",
