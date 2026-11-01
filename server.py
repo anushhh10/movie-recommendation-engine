@@ -27,10 +27,11 @@ print(f"[Graph Engine] Initialized {len(graph)} nodes and relationships successf
 
 @app.route("/", methods=["GET"])
 def index():
-    """Serves index.html from static directory if present, or API metadata."""
-    index_file = os.path.join(STATIC_DIR, "index.html")
-    if os.path.exists(index_file):
-        return send_from_directory(STATIC_DIR, "index.html")
+    return send_from_directory(STATIC_DIR, "index.html")
+
+@app.route("/static/<path:filename>")
+def serve_static(filename):
+    return send_from_directory(STATIC_DIR, filename)
     return jsonify({
         "status": "online",
         "service": "Relationship-Driven Movie Recommendation API",
