@@ -9,21 +9,19 @@ from graph_engine import MovieGraph, MovieNode
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 
-# Initialize Flask without default static routing to prevent route conflicts
 app = Flask(__name__, static_folder=None)
 CORS(app)
 
-# Initialize graph once at startup
 print("[Graph Engine] Initializing movie dataset and graph relations...")
 movies = get_sample_movies()
 graph: MovieGraph = build_movie_graph(movies)
 print(f"[Graph Engine] Initialized {len(graph)} nodes and relationships successfully.")
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def index():
     return send_from_directory(STATIC_DIR, "index.html")
 
-@app.route("/<path:path>")
+@app.route("/<path:path>", methods=["GET"])
 def serve_static(path):
     file_path = os.path.join(STATIC_DIR, path)
     if os.path.exists(file_path):
